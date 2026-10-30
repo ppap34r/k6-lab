@@ -31,3 +31,12 @@
 - http_req_failed: 0%
 - Checks succeeded: 100% (20/20)
 - Total duration: 5.9 seconds
+
+### Step 0.4
+- Script: 04-pizza-api.js
+- Checks succeeded: 100% (3/3)
+- http_reqs: 1
+- http_req_duration: 406.2 ms
+- http_req_failed: 0%
+- iteration_duration: 2.24 s
+- Result: All checks passed. The API returned HTTP 200 and a vegetarian pizza with a name.
