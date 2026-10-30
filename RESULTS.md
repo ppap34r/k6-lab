@@ -19,3 +19,15 @@
       { expected_response:true }...: avg=302.42ms min=262.58ms med=286.83ms max=614.92ms p(90)=331.2ms p(95)=348.4ms
     http_req_failed................: 0.00%  0 out of 75
     http_reqs......................: 75     3.595033/s
+
+
+### Step 0.3
+- VUs: 5
+- Iterations: 20
+- http_reqs: 20
+- Request rate: 3.397 req/s
+- http_req_duration avg: 306.95 ms
+- http_req_duration p(95): 354.17 ms
+- http_req_failed: 0%
+- Checks succeeded: 100% (20/20)
+- Total duration: 5.9 seconds
