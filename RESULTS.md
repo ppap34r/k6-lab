@@ -48,3 +48,8 @@
 - http_req_duration: 277.52 ms
 - http_req_failed: 0%
 - Result: The API successfully refused a request without an authorization token.
+
+### Step 0.6
+- Step 0.6, exit codes:
+  - Normal run: 0 (all thresholds passed) = Threshold p(95): 616.09 ms	
+  - Strict run (P95=300): 99 (http_req_duration threshold failed) = Threshold p(95): 668.52 ms
