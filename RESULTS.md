@@ -62,3 +62,16 @@
 - Total requests: 64
 - Checks: 128 succeeded, 0 failed
 - Overall: All thresholds passed.
+
+#### Second Run p(95)<300: Strict Run
+- Modified threshold: p(95)<300 ms
+- Measured p(95): 461.38 ms (FAIL)
+- Measured p(99): 482.84 ms (PASS)
+- http_req_failed: 0.00% (PASS)
+- Total requests: 65
+- Checks: 130 succeeded, 0 failed
+- Exit code: 99
+- Overall: Failed because p(95) exceeded the strict threshold.
+
+#### Conclusion
+The API successfully handled all requests, but it did not meet the strict response time requirement of p(95) at 300 ms . This demonstrates that K6 thresholds can fail even when HTTP checks succeed.
