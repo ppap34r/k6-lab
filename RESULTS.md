@@ -40,3 +40,11 @@
 - http_req_failed: 0%
 - iteration_duration: 2.24 s
 - Result: All checks passed. The API returned HTTP 200 and a vegetarian pizza with a name.
+
+### Step 0.5
+- Script: 05-no-token.js
+- Checks succeeded: 100% (1/1)
+- http_reqs: 1
+- http_req_duration: 277.52 ms
+- http_req_failed: 0%
+- Result: The API successfully refused a request without an authorization token.
