@@ -123,3 +123,10 @@ The API successfully handled all requests, but it did not meet the strict respon
 | Step | Test | VUs | Duration | Requests | Request Rate | Avg Response Time | p(95) Response Time | Failed Requests | Checks |
 |------|------|-----|----------|----------|--------------|-------------------|---------------------|-----------------|--------|
 | A3 | Stress Test | 5 | 3 min | 372 | 2.04 req/s | 385.08 ms | 699.06 ms | 0.00% | 496/496 PASS |
+
+### Step A4
+| Step | Test | VUs | Duration | Requests | Request Rate | Avg Response Time | p(95) Response Time | Failed Requests | Checks |
+|---|---|---|---|---|---|---|---|---|---|
+| A4 | Spike Test | 1 → 5 → 1 | 2 min 20 sec | 138 | 0.97 req/s | 364.68 ms | 654.88 ms | 0.00% | 184/184 PASS |
+
+- The spike test increased the load from 1 to 5 users, then reduced it back to 1. Response time stayed mostly stable and recovered after the spike. All thresholds and checks passed, with no failed requests.
