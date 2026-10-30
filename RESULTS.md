@@ -53,3 +53,12 @@
 - Step 0.6, exit codes:
   - Normal run: 0 (all thresholds passed) = Threshold p(95): 616.09 ms	
   - Strict run (P95=300): 99 (http_req_duration threshold failed) = Threshold p(95): 668.52 ms
+
+### Step 0.7
+#### First Run
+- p(95): 482.33 ms (PASS)
+- p(99): 762.25 ms (PASS)
+- http_req_failed: 0.00% (PASS)
+- Total requests: 64
+- Checks: 128 succeeded, 0 failed
+- Overall: All thresholds passed.
