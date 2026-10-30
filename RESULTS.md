@@ -118,3 +118,8 @@ The API successfully handled all requests, but it did not meet the strict respon
 **Conclusion:** The system successfully passed the average-load test. All performance thresholds were satisfied, with 100% successful checks and no failed HTTP requests.
 
 **HTML Report:** `reports/a2-average.html`
+
+### Step A3
+| Step | Test | VUs | Duration | Requests | Request Rate | Avg Response Time | p(95) Response Time | Failed Requests | Checks |
+|------|------|-----|----------|----------|--------------|-------------------|---------------------|-----------------|--------|
+| A3 | Stress Test | 5 | 3 min | 372 | 2.04 req/s | 385.08 ms | 699.06 ms | 0.00% | 496/496 PASS |
