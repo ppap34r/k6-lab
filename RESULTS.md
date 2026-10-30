@@ -75,3 +75,25 @@
 
 #### Conclusion
 The API successfully handled all requests, but it did not meet the strict response time requirement of p(95) at 300 ms . This demonstrates that K6 thresholds can fail even when HTTP checks succeed.
+
+### Step 0.8 – Bug Hunt
+- Test file: `08-bug-hunt.js`
+- Test command: `k6 run --vus 5 --duration 20s 08-bug-hunt.js`
+- Virtual users: 5
+- Duration: 20 seconds
+- Total checks: 201
+- Checks succeeded: 100% (201/201)
+- Checks failed: 0% (0/201)
+- HTTP requests: 67
+- Request rate: 3.14 req/s
+- Average response time: 466.31 ms
+- p(95) response time: 1.09 s
+- HTTP request failed: 0%
+
+#### Bug found and fixed:
+- The topping name needed to be `Pepperoni` instead of `pepperoni`.
+- The tool name needed to be `Knife` instead of `knife`.
+- Explored the API to identify the correct names and fixed the test data.
+
+#### Result: 
+- All three checks passed successfully under 5 virtual users for 20 seconds.
