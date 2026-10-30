@@ -130,3 +130,10 @@ The API successfully handled all requests, but it did not meet the strict respon
 | A4 | Spike Test | 1 → 5 → 1 | 2 min 20 sec | 138 | 0.97 req/s | 364.68 ms | 654.88 ms | 0.00% | 184/184 PASS |
 
 - The spike test increased the load from 1 to 5 users, then reduced it back to 1. Response time stayed mostly stable and recovered after the spike. All thresholds and checks passed, with no failed requests.
+
+### Step A5
+| Step | Test | VUs | Duration | Requests | Request Rate | Avg Response Time | p(95) Response Time | Failed Requests | Checks |
+|---|---|---|---|---|---|---|---|---|---|
+| A5 | Soak Test | 2 | 11 min | 642 | 0.97 req/s | 349.33 ms | 458.12 ms | 0.00% | 856/856 PASS |
+
+- The system maintained stable performance during the 11-minute soak test. Response time did not increase significantly over time, and there were no failed requests. All checks and thresholds passed.
