@@ -97,3 +97,24 @@ The API successfully handled all requests, but it did not meet the strict respon
 
 #### Result: 
 - All three checks passed successfully under 5 virtual users for 20 seconds.
+
+
+### Step A2 – Average-load test
+
+| Metric | Result |
+|---|---:|
+| Virtual Users (VUs) | 3 |
+| Test Duration | 3 minutes |
+| HTTP Requests | 234 |
+| Iterations | 78 |
+| Average Response Time | 362.44 ms |
+| Overall p(95) Response Time | 554.51 ms |
+| Home p(95) Response Time | 591.09 ms |
+| Recommendation p(95) Response Time | 574.47 ms |
+| HTTP Request Failure Rate | 0% |
+| Checks Succeeded | 100% |
+| Thresholds | PASS |
+
+**Conclusion:** The system successfully passed the average-load test. All performance thresholds were satisfied, with 100% successful checks and no failed HTTP requests.
+
+**HTML Report:** `reports/a2-average.html`
