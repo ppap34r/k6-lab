@@ -137,3 +137,64 @@ The API successfully handled all requests, but it did not meet the strict respon
 | A5 | Soak Test | 2 | 11 min | 642 | 0.97 req/s | 349.33 ms | 458.12 ms | 0.00% | 856/856 PASS |
 
 - The system maintained stable performance during the 11-minute soak test. Response time did not increase significantly over time, and there were no failed requests. All checks and thresholds passed.
+
+
+## Part B: Reflection
+
+### 1. Results Table (Steps A1–A5)
+
+| Step | Test | VUs | Duration | Requests | Request Rate | Avg Response Time | p(95) Response Time | Failed Requests | Checks |
+|---|---|---:|---|---:|---:|---:|---:|---:|---|
+| A1 | Smoke Test | 1 | 30 sec | 15 | 0.49 req/s | 364.92 ms | 502.07 ms | 0.00% | 20/20 PASS |
+| A2 | Average Load Test | 3 | 3 min | 234 | 1.28 req/s | 362.44 ms | 554.51 ms | 0.00% | 312/312 PASS |
+| A3 | Stress Test | 5 | 3 min | 372 | 2.04 req/s | 385.08 ms | 699.06 ms | 0.00% | 496/496 PASS |
+| A4 | Spike Test | 1 → 5 → 1 | 2 min 20 sec | 138 | 0.97 req/s | 364.68 ms | 654.88 ms | 0.00% | 184/184 PASS |
+| A5 | Soak Test | 2 | 11 min | 642 | 0.97 req/s | 349.33 ms | 458.12 ms | 0.00% | 856/856 PASS |
+
+### 2. Why was the request rate below 5 requests per second with 5 virtual users in Step 0.2?
+
+The request rate is below 5 requests per second because each VU waits for 1 second after each iteration using sleep(1).
+
+### 3. Did the response time grow from the average-load test to the stress test? Explain with the operational envelope.
+
+Yes. The p(95) response time increased from 554.51 ms in A2 to 699.06 ms in A3. This means the system became slower with more users. However, it still stayed within the tested performance limits, so it was still inside the operational envelope.
+
+### 4. In the spike test, how long did the response time take to return to normal after the spike?
+
+The response time returned close to its normal level in about 10–15 seconds after the spike. It did not stay high for a long time.
+
+### 5. In the soak test, did the response time or error rate get worse over time? Name one kind of defect that a soak test of several hours could reveal.
+
+No. The response time stayed mostly stable, and the error rate remained at 0%. A longer soak test could reveal a memory leak, which can slowly use up the system's memory over time.
+
+### 6. Why do the thresholds in this lab use p(95) rather than the average?
+
+The average can hide slow requests. p(95) shows the response time that 95% of requests finish within, so it helps us understand the experience of most users, including slower requests.
+
+### 7. Give two reasons why the same tests against a system in a lab could give different numbers.
+
+1. A lab usually has a more stable network, while internet speed and traffic can change.
+2. A lab system may have different hardware, resources, or server settings from the public website.
+
+### 8. Why must you never run a stress, spike or breakpoint test with hundreds of users against a site that you do not own?
+
+It could overload the website, slow it down, or make it unavailable to other users. This could be treated as an attack if we do not have permission.
+
+### 9. Write one vague performance requirement and rewrite it as a testable requirement.
+
+**Vague requirement:**
+
+The messaging app should be fast.
+
+**Testable requirement:**
+
+95% of message-sending requests should finish within 1 second when 100 users use the app at the same time. The request failure rate should be below 1%.
+
+**k6 thresholds:**
+
+```javascript
+thresholds: {
+  http_req_duration: ['p(95)<1000'],
+  http_req_failed: ['rate<0.01'],
+}
+```
